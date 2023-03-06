@@ -9,7 +9,7 @@ btnEl.addEventListener(`click`, function () {
     mainContainerEl.append(newGridEl);
 
     for (let i = 1; i <= 100; i++) {
-        let squareEl = createSquare(i);
+        let squareEl = createSquare(i, 10);
         newGridEl.append(squareEl);
 
         squareEl.addEventListener(`click`, function () {
@@ -19,11 +19,11 @@ btnEl.addEventListener(`click`, function () {
     
 });
 
-function createSquare(squareNumber) {
+function createSquare(squareNumber, columnNumber) {
     let newSquareEl = document.createElement(`div`);
     newSquareEl.classList.add(`square`);
-    newSquareEl.style.width = `calc(100% / 10)`;
-    newSquareEl.style.height = `calc(100% / 10)`;
+    newSquareEl.style.width = `calc(100% / columnNumber)`;
+    newSquareEl.style.height = `calc(100% / columnNumber)`;
     newSquareEl.textContent = squareNumber;
 
     return newSquareEl;
