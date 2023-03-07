@@ -74,7 +74,7 @@ function arrayNumbersGenerator(maxNumber, lastNumber) {
     while (arrayNumbers.length < maxNumber) {
         let randomNumbers = randomNumberGenerator(lastNumber);
 
-        if (arrayNumbers.includes(randomNumbers)) {
+        if (!arrayNumbers.includes(randomNumbers)) {
             arrayNumbers.push(randomNumbers);
 
         };
