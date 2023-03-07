@@ -11,20 +11,24 @@
 const btnEl = document.getElementById(`btn`);
 const mainContainerEl = document.getElementById(`main-container`);
 const levelEl = document.getElementById(`level`);
-const bombElements = arrayNumberGenerator(16);
-console.log(bombElements)
 
 btnEl.addEventListener(`click`, function () {
     mainContainerEl.innerHTML = ``;
-
+    
     if (levelEl.value == 1) {
         createGrid(100, 10);
+        let bombElements = arrayNumbersGenerator(16, 100);
+        console.log(bombElements);
 
     } else if (levelEl.value == 2) {
         createGrid(81, 9);
+        bombElements = arrayNumbersGenerator(16, 81);
+        console.log(bombElements)
 
     } else if (levelEl.value == 3) {
         createGrid(49, 7);
+        bombElements = arrayNumbersGenerator(16, 49);
+        console.log(bombElements)
 
     };
 
@@ -64,15 +68,18 @@ function randomNumberGenerator(lastNumber) {
     return randomNumber;
 };
 
-function arrayNumberGenerator() {
-    let arrayNumbers = [
-        randomNumberGenerator(16), randomNumberGenerator(16), randomNumberGenerator(16),
-        randomNumberGenerator(16), randomNumberGenerator(16), randomNumberGenerator(16),
-        randomNumberGenerator(16), randomNumberGenerator(16), randomNumberGenerator(16),
-        randomNumberGenerator(16), randomNumberGenerator(16), randomNumberGenerator(16),
-        randomNumberGenerator(16), randomNumberGenerator(16), randomNumberGenerator(16),
-        randomNumberGenerator(16)
-    ];
+function arrayNumbersGenerator(maxNumber, lastNumber) {
+    let arrayNumbers = [];
+
+    while (arrayNumbers.length < maxNumber) {
+        let randomNumbers = randomNumberGenerator(lastNumber);
+
+        if (arrayNumbers.includes(randomNumbers)) {
+            arrayNumbers.push(randomNumbers);
+
+        };
+
+    };
 
     return arrayNumbers;
 };
